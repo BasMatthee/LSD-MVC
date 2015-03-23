@@ -1,12 +1,16 @@
 <?
 
+session_start();
+
+ob_start('ob_gzhandler');
+
 // Root path defined
 define('ROOT_PATH',dirname(__FILE__));
 
 // Include configs
-include ROOT_PATH.'/config/conf.core.php';
-include ROOT_PATH.'/config/conf.db.php';
-include ROOT_PATH.'/config/conf.autoload.php';
+require_once ROOT_PATH.'/config/conf.core.php';
+require_once ROOT_PATH.'/config/conf.db.php';
+require_once ROOT_PATH.'/config/conf.autoload.php';
 
 // Error reporting (Set mode in core config)
 if ($config['mode'] == 'development') {
@@ -15,7 +19,7 @@ if ($config['mode'] == 'development') {
     error_reporting(E_ALL);
     ini_set('display_errors',1);
     
-} else {
+} elseif ($config['mode'] == 'production') {
     
     // Off
     error_reporting(0);
@@ -24,13 +28,17 @@ if ($config['mode'] == 'development') {
 }
 
 // Include database
-include ROOT_PATH.'/core/inc.db.php';
+require_once ROOT_PATH.'/core/inc.db.php';
 
 // Include system files
-include ROOT_PATH.'/system/sys.router.php';
-include ROOT_PATH.'/system/sys.application.php';
-include ROOT_PATH.'/system/sys.register.php';
-include ROOT_PATH.'/system/sys.template.php';
+require_once ROOT_PATH.'/system/sys.router.php';
+require_once ROOT_PATH.'/system/sys.application.php';
+require_once ROOT_PATH.'/system/sys.register.php';
+require_once ROOT_PATH.'/system/sys.template.php';
+require_once ROOT_PATH.'/system/sys.model.php';
+
+// Include the core helper
+require_once ROOT_PATH.'/helper/core_helper.php';
 
 // Prepare register
 $register           = new Register();

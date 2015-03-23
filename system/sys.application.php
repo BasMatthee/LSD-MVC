@@ -37,6 +37,8 @@ abstract class Application {
         
         $this->model->$model = new $classname;
         
+        $this->register->template->model->$model = &$this->model->$model;
+        
     }
     
     // Helper, library and model autoloader
@@ -55,6 +57,8 @@ abstract class Application {
                     
                     $this->$type->$load = new $classname;
                     
+                    $this->register->template->$type->$load = &$this->$type->$load;
+                    
                 }
                 
             }
@@ -64,5 +68,51 @@ abstract class Application {
     }
     
     abstract function index();
+    
+}
+
+class ApplicationAdmin extends Application {
+    
+    public function __construct($register) {
+        
+        parent::__construct($register);
+        
+        // Secure admin area
+        if (!isset($_SESSION[get_config('sess')]['is_admin']) || $_SESSION[get_config('sess')]['is_admin'] == 0) {
+            
+            redirect('auth/login');
+            
+        }
+        
+    }
+    
+    public function index() {
+        
+        
+        
+    }
+    
+}
+
+class ApplicationFront extends Application {
+    
+    public function __construct($register) {
+        
+        parent::__construct($register);
+        
+        // Secure admin area
+        if (!isset($_SESSION[get_config('sess')]['user_id'])) {
+            
+            redirect('auth/login');
+            
+        }
+        
+    }
+    
+    public function index() {
+        
+        
+        
+    }
     
 }

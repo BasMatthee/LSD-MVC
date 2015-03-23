@@ -21,29 +21,48 @@ class Router {
     
     public function render() {
         
-        if (isset($this->uri[0])) {
+        // Default
+        $controller = 'index';
+        
+        // Default
+        $action = 'index';
+        
+        // Admin path prefix
+        $admin_prefix = '';
+        
+        $url_position = 0;
+        
+        if (isset($this->uri[$url_position])) {
             
-            $controller = $this->uri[0];
+            $controller = $this->uri[$url_position];
             
-        } else {
+            if ($controller == get_config('admin_path')) {
+                
+                $admin_prefix = get_config('admin_path').'/';
+                
+                $url_position++;
+                
+                if (isset($this->uri[$url_position])) {
+                    
+                    $controller = $this->uri[$url_position];
+                    
+                } else {
+                    
+                    $controller = 'index';
+                    
+                }
+                
+            }
             
-            // Default
-            $controller = 'index';
+            if (isset($this->uri[($url_position+1)])) {
+                
+                $action = $this->uri[($url_position+1)];
+                
+            }
             
         }
         
-        if (isset($this->uri[1])) {
-            
-            $action = $this->uri[1];
-            
-        } else {
-            
-            // Default
-            $action = 'index';
-            
-        }
-        
-        $controller_file = ROOT_PATH.'/controller/'.$controller.'.php';
+        $controller_file = ROOT_PATH.'/controller/'.$admin_prefix.$controller.'_controller.php';
         
         // Does controller really exist?
         if (file_exists($controller_file) === false) {
@@ -61,7 +80,15 @@ class Router {
         $controller = new $classname($this->register);
         
         // Execute
-        $controller->$action();
+        if (method_exists($controller,$action)) {
+            
+            $controller->$action();
+            
+        } else {
+            
+            $controller->index();
+            
+        }
         
     }
     

@@ -1,8 +1,8 @@
 <?
 
-class index_controller extends Application {
+class index_controller extends ApplicationAdmin {
     
-    public function __construct($register) { 
+    public function __construct($register) {
         
         parent::__construct($register);
         
@@ -10,7 +10,7 @@ class index_controller extends Application {
     
     public function index() {
         
-        $this->view('index/home');
+        redirect('admin/dashboard');
         
     }
     

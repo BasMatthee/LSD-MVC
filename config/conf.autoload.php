@@ -1,10 +1,10 @@
 <?
 
 // Autoload helpers
-$autoload['helper'] = array('core');
+$autoload['helper'] = array();
 
 // Autoload models
-$autoload['model'] = array();
+$autoload['model'] = array('alert');
 
 // Autoload libraries
 $autoload['library'] = array();
