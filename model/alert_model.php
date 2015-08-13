@@ -16,7 +16,7 @@ class Alert_model extends Core_model {
         
     }
     
-    public function set_alert($alert,$alert_type='success') {
+    public function set_alert($alert, $alert_type = 'success') {
         
         $this->alerts[] = array(
             'alert' => $alert,

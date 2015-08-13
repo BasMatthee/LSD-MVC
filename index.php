@@ -5,7 +5,7 @@ session_start();
 ob_start('ob_gzhandler');
 
 // Root path defined
-define('ROOT_PATH',dirname(__FILE__));
+define('ROOT_PATH', dirname(__FILE__));
 
 // Include configs
 require_once ROOT_PATH.'/config/conf.core.php';
@@ -17,13 +17,13 @@ if ($config['mode'] == 'development') {
     
     // On
     error_reporting(E_ALL);
-    ini_set('display_errors',1);
+    ini_set('display_errors', 1);
     
 } elseif ($config['mode'] == 'production') {
     
     // Off
     error_reporting(0);
-    ini_set('display_errors',0);
+    ini_set('display_errors', 0);
     
 }
 

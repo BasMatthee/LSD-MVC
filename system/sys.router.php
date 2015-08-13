@@ -12,7 +12,7 @@ class Router {
         if (isset($_GET['uri'])) {
             
             // Extract URI
-            $this->uri = explode('/',$_GET['uri']);
+            $this->uri = explode('/', $_GET['uri']);
             $this->uri = array_filter($this->uri);
             
         }
@@ -67,7 +67,7 @@ class Router {
         // Does controller really exist?
         if (file_exists($controller_file) === false) {
             
-            throw new Exception('Controller not found: '. $controller_file);
+            throw new Exception('Controller not found: '.$controller_file);
             return false;
             
         }
@@ -80,7 +80,7 @@ class Router {
         $controller = new $classname($this->register);
         
         // Execute
-        if (method_exists($controller,$action)) {
+        if (method_exists($controller, $action)) {
             
             $controller->$action();
             

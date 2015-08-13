@@ -7,7 +7,7 @@ abstract class Application {
     
     public function __construct($register) {
         
-        $this->db       = $register->db;
+        $this->db = $register->db;
         
         // Cleanup
         unset($register->vars['route']);
@@ -21,6 +21,9 @@ abstract class Application {
         
     }
     
+    /**
+     * @param string $view
+     */
     public function view($view,$data=array()) {
         
         $this->register->data = array_merge($this->register->data,$data);

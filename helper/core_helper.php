@@ -1,6 +1,9 @@
 <?
 
 // Returns the configuration setting
+/**
+ * @param string $key
+ */
 function get_config($key,$default=null) {
     
     global $config;
@@ -38,6 +41,9 @@ function asset_url($path) {
 }
 
 // Redirection made even easier
+/**
+ * @param string $location
+ */
 function redirect($location,$external=false) {
     
     if ($external) {
@@ -55,9 +61,9 @@ function redirect($location,$external=false) {
 }
 
 // Simple compare function with optional return value
-function is_active($var1,$var2,$return='active') {
+function is_active($var1, $var2, $return = 'active') {
     
-    return ($var1 === $var2)?$return:null;
+    return ($var1 === $var2) ? $return : null;
     
 }
 
@@ -67,12 +73,12 @@ function uri($segmment) {
     if (isset($_GET['uri'])) {
         
         // Extract URI
-        $uri = explode('/',$_GET['uri']);
+        $uri = explode('/', $_GET['uri']);
         $uri = array_filter($uri);
         
     }
     
-    return (isset($uri[$segmment]))?$uri[$segmment]:false;
+    return (isset($uri[$segmment])) ? $uri[$segmment] : false;
     
 }
 
@@ -105,7 +111,7 @@ function get_slug($string) {
 }
 
 // Formats any English formatted date string 
-function format_date($date,$format='d-m-Y',$is_timestamp=false) {
+function format_date($date, $format = 'd-m-Y', $is_timestamp = false) {
     
     if (!$is_timestamp) {
         
@@ -113,15 +119,15 @@ function format_date($date,$format='d-m-Y',$is_timestamp=false) {
         
     }
     
-    return date($format,$date);
+    return date($format, $date);
     
 }
 
 // Formats a float/ecimal number to a price
-function format_price($price,$prefix=false) {
+function format_price($price, $prefix = false) {
     
-    $price = str_replace(',','.',$$price);
+    $price = str_replace(',', '.', $$price);
     
-    return $prefix.number_format($price,'2',',','.');
+    return $prefix.number_format($price, '2', ',', '.');
     
 }
