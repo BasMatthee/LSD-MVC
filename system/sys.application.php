@@ -24,9 +24,9 @@ abstract class Application {
     /**
      * @param string $view
      */
-    public function view($view,$data=array()) {
+    public function view($view, $data = array()) {
         
-        $this->register->data = array_merge($this->register->data,$data);
+        $this->register->data = array_merge($this->register->data, $data);
         
         $this->register->template->show($view);
         

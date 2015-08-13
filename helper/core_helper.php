@@ -4,16 +4,16 @@
 /**
  * @param string $key
  */
-function get_config($key,$default=null) {
+function get_config($key, $default = null) {
     
     global $config;
     
-    return (isset($config[$key]))?$config[$key]:$default;
+    return (isset($config[$key])) ? $config[$key] : $default;
     
 }
 
 // Returns the base URL with the given path
-function base_url($path='') {
+function base_url($path = '') {
     
     return get_config('home_url').'/'.$path;
     
@@ -44,7 +44,7 @@ function asset_url($path) {
 /**
  * @param string $location
  */
-function redirect($location,$external=false) {
+function redirect($location, $external = false) {
     
     if ($external) {
         
