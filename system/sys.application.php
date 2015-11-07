@@ -88,7 +88,7 @@ class ApplicationAdmin extends Application
      * @param Registry $registry
      * @constructor
      */
-    public function __construct($registry)
+    public function __construct(Registry $registry)
     {
         parent::__construct($registry);
 
@@ -114,7 +114,7 @@ class ApplicationFront extends Application
      * @param Registry $registry
      * @constructor
      */
-    public function __construct($registry)
+    public function __construct(Registry $registry)
     {
 
         parent::__construct($registry);
