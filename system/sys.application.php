@@ -80,7 +80,7 @@ abstract class Application
     /**
      * @return string
      */
-    abstract function index();
+    public abstract function index();
 }
 
 /**
