@@ -1,6 +1,5 @@
-<?
+<?php
 
-// Database config
 $db_conf = array(
     'db_host' => 'localhost',
     'db_user' => 'username',

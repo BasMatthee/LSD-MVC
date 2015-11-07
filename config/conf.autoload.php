@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Autoload helpers
 $autoload['helper'] = array();
