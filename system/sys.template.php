@@ -7,6 +7,8 @@ class Template
 {
     /** @type Registry */
     private $registry;
+    /** @type Core_model[] */
+    public $model;
 
     /**
      * @param Registry $registry
