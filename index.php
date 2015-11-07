@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @type array $config
+ * @type array $autoload
+ */
+
 session_start();
 
 ob_start('ob_gzhandler');
