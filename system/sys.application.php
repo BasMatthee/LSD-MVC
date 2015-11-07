@@ -11,6 +11,8 @@ abstract class Application
     private $data = array();
     /** @type Core_model[] */
     public $model;
+    /** @type mysqli */
+    public $db;
 
     /**
      * @param Registry $registry
