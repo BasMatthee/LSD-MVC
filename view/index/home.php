@@ -1,4 +1,4 @@
-<? $this->show('layout/header') ?>
+<?php $this->show('layout/header') ?>
 
     <!-- Page Content -->
     <div class="container">
@@ -67,4 +67,4 @@
     </div>
     <!-- /.container -->
 
-<? $this->show('layout/footer') ?>
+<?php $this->show('layout/footer') ?>
