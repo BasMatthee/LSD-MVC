@@ -1,17 +1,24 @@
-<?
+<?php
 
-class index_controller extends ApplicationAdmin {
-    
-    public function __construct($register) {
-        
-        parent::__construct($register);
-        
+/**
+ * Class index_controller
+ */
+class index_controller extends ApplicationAdmin
+{
+    /**
+     * @param Registry $registry
+     * @constructor
+     */
+    public function __construct(Registry $registry)
+    {
+        parent::__construct($registry);
     }
-    
-    public function index() {
-        
+
+    /**
+     * @return void
+     */
+    public function index()
+    {
         redirect('admin/dashboard');
-        
     }
-    
 }

@@ -1,17 +1,24 @@
-<?
+<?php
 
-class index_controller extends ApplicationFront {
-    
-    public function __construct($register) { 
-        
-        parent::__construct($register);
-        
+/**
+ * Class index_controller
+ */
+class index_controller extends ApplicationFront
+{
+    /**
+     * @param Registry $registry
+     * @constructor
+     */
+    public function __construct(Registry $registry)
+    {
+        parent::__construct($registry);
     }
-    
-    public function index() {
-        
+
+    /**
+     * @return void
+     */
+    public function index()
+    {
         $this->view('index/home');
-        
     }
-    
 }

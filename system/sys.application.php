@@ -1,121 +1,135 @@
-<?
+<?php
 
-abstract class Application {
-    
-    private $register;
+/**
+ * Class Application
+ */
+abstract class Application
+{
+    /** @type Registry */
+    private $registry;
+    /** @type array */
     private $data = array();
-    
-    public function __construct($register) {
-        
-        $this->db = $register->db;
-        
-        // Cleanup
-        unset($register->vars['route']);
-        unset($register->vars['db']);
-        
-        $this->register       = $register;
-        $this->register->data = array();
-        
-        // Autoload init
+
+    /**
+     * @param Registry $registry
+     * @constructor
+     */
+    public function __construct(Registry $registry)
+    {
+        $this->db = $registry->db;
+
+        unset($registry->vars['route']);
+        unset($registry->vars['db']);
+
+        $this->registry = $registry;
+        $this->registry->data = array();
+
         $this->autoloader();
-        
     }
-    
+
     /**
      * @param string $view
+     * @param array $data
+     * @return void
      */
-    public function view($view, $data = array()) {
-        
-        $this->register->data = array_merge($this->register->data, $data);
-        
-        $this->register->template->show($view);
-        
+    public function view($view, $data = array())
+    {
+        $this->registry->data = array_merge($this->registry->data, $data);
+        $this->registry->template->show($view);
     }
-    
-    public function init_model($model) {
-        
-        include_once ROOT_PATH.'/model/'.$model.'_model.php';
-        
-        $classname = ucfirst($model).'_model';
-        
-        $this->model->$model = new $classname;
-        
-        $this->register->template->model->$model = &$this->model->$model;
-        
+
+    /**
+     * @param string $model
+     * @return void
+     */
+    public function init_model($model)
+    {
+        include_once ROOT_PATH . '/model/' . $model . '_model.php';
+
+        $className = ucfirst($model) . '_model';
+
+        $this->model->$model = new $className;
+
+        $this->registry->template->model->$model = &$this->model->$model;
     }
-    
-    // Helper, library and model autoloader
-    private function autoloader() {
-        
-        foreach ($this->register->autoload as $type => $loader) {
-            
+
+    /**
+     * @return void
+     */
+    private function autoloader()
+    {
+        foreach ($this->registry->autoload as $type => $loader) {
             foreach ($loader as $load) {
-                
-                include_once ROOT_PATH.'/'.$type.'/'.$load.'_'.$type.'.php';
-                
+                include_once ROOT_PATH . '/' . $type . '/' . $load . '_' . $type . '.php';
+
                 // Create instance if not a helper
                 if ($type != 'helper') {
-                    
-                    $classname = ucfirst($load).'_'.$type;
-                    
-                    $this->$type->$load = new $classname;
-                    
-                    $this->register->template->$type->$load = &$this->$type->$load;
-                    
+                    $className = ucfirst($load) . '_' . $type;
+
+                    $this->$type->$load = new $className;
+                    $this->registry->template->$type->$load = &$this->$type->$load;
                 }
-                
             }
-            
         }
-        
     }
-    
+
+    /**
+     * @return string
+     */
     abstract function index();
-    
 }
 
-class ApplicationAdmin extends Application {
-    
-    public function __construct($register) {
-        
-        parent::__construct($register);
-        
-        // Secure admin area
+/**
+ * Class ApplicationAdmin
+ */
+class ApplicationAdmin extends Application
+{
+    /**
+     * @param Registry $registry
+     * @constructor
+     */
+    public function __construct($registry)
+    {
+        parent::__construct($registry);
+
         if (!isset($_SESSION[get_config('sess')]['is_admin']) || $_SESSION[get_config('sess')]['is_admin'] == 0) {
-            
             redirect('auth/login');
-            
         }
-        
     }
-    
-    public function index() {
-        
-        
-        
+
+    /**
+     * @return mixed
+     */
+    public function index()
+    {
     }
-    
 }
 
-class ApplicationFront extends Application {
-    
-    public function __construct($register) {
-        
-        parent::__construct($register);
-        
+/**
+ * Class ApplicationFront
+ */
+class ApplicationFront extends Application
+{
+    /**
+     * @param Registry $registry
+     * @constructor
+     */
+    public function __construct($registry)
+    {
+
+        parent::__construct($registry);
+
         // Secure admin area
         if (!isset($_SESSION[get_config('sess')]['user_id'])) {
-            
+
             redirect('auth/login');
-            
         }
-        
     }
-    
-    public function index() {
-        
-        
-        
+
+    /**
+     * @return mixed
+     */
+    public function index()
+    {
     }
-    
 }

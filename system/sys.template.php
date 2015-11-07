@@ -1,31 +1,31 @@
-<?
+<?php
 
-class Template {
-    
-    private $register;
-    
-    public function __construct($register) {
-        
-        $this->register = $register;
-        
+/**
+ * Class Template
+ */
+class Template
+{
+    /** @type Registry */
+    private $registry;
+
+    /**
+     * @param Registry $registry
+     * @constructor.
+     */
+    public function __construct(Registry $registry)
+    {
+        $this->registry = $registry;
     }
-    
-    public function render_view() {
-        
-        
-        
-    }
-    
-    public function show($view) {
-        
-        foreach ($this->register->data as $key => $value) {
-            
+
+    /**
+     * @param string $view
+     */
+    public function show($view)
+    {
+        foreach ($this->registry->data as $key => $value) {
             $$key = $value;
-            
         }
-        
-        include ROOT_PATH.'/view/'.$view.'.php';
-        
+
+        include ROOT_PATH . '/view/' . $view . '.php';
     }
-    
 }

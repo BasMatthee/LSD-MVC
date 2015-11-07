@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Home url (no trailing slash!)
 $config['home_url'] = 'http://www.website.com';
