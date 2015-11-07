@@ -5,6 +5,7 @@
  *
  * @property array $config
  * @property array $autoload
+ * @property array $data
  *
  * @property mysqli $db
  *

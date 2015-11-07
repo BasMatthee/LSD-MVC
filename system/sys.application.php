@@ -9,6 +9,8 @@ abstract class Application
     private $registry;
     /** @type array */
     private $data = array();
+    /** @type Core_model[] */
+    public $model;
 
     /**
      * @param Registry $registry
