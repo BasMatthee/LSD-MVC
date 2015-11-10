@@ -11,6 +11,8 @@ ob_start('ob_gzhandler');
 
 define('ROOT_PATH', dirname(__FILE__));
 
+require_once ROOT_PATH . '/Helpers/core_helper.php';
+
 require_once ROOT_PATH . '/System/Autoloader.php';
 spl_autoload_register('Skeleton\System\Autoloader::loader');
 
@@ -27,7 +29,6 @@ if ('development' === $config['mode']) {
 }
 
 require_once ROOT_PATH . '/Infrastructure/inc.db.php';
-require_once ROOT_PATH . '/Helpers/core_helper.php';
 
 $registry = new \Skeleton\System\Registry();
 $registry->services = new \Skeleton\System\ServiceContainer($classes, $services);

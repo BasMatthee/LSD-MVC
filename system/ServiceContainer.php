@@ -5,7 +5,7 @@ namespace Skeleton\System;
  * ServiceContainer
  *
  * @author Bas Matthee <basmatthee@gmail.com>
- * @copyright Copyright (c) 2015 LEVIY <https://www.leviy.com>
+ * @copyright Copyright (c) 2015 Bas Matthee <http://www.bas-matthee.nl>
  * @package Skeleton\System
  */
 class ServiceContainer

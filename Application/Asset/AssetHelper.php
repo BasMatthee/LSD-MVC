@@ -8,13 +8,23 @@ namespace Skeleton\Application\Asset;
  * @copyright Copyright (c) 2015 Bas Matthee <http://www.bas-matthee.nl>
  * @package AssetHelper
  */
-class AssetsHelper
+class AssetHelper
 {
+    /** @type string */
+    private $baseUrl;
     /** @type array */
     private $assets = array(
         'css' => array(),
         'js' => array(),
     );
+
+    /**
+     * @param string $baseUrl
+     */
+    public function __construct($baseUrl)
+    {
+        $this->baseUrl = (string)$baseUrl;
+    }
 
     /**
      * @param string $type
@@ -51,11 +61,11 @@ class AssetsHelper
 
         foreach ($this->assets[$type] as $asset) {
             if ('css' === $type) {
-                echo '<link rel="styleheet" type="text/css" href="' . $asset['file'] . '"/>' . PHP_EOL;
+                echo '<link rel="stylesheet" type="text/css" href="' . $this->baseUrl . $asset['file'] . '"/>' . PHP_EOL;
             }
 
             if ('js' === $type) {
-                echo '<script type="text/javascript" src="' . $asset['file'] . '"></script>' . PHP_EOL;
+                echo '<script type="text/javascript" src="' . $this->baseUrl . $asset['file'] . '"></script>' . PHP_EOL;
             }
         }
     }
