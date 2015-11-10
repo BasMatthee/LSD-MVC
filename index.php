@@ -11,9 +11,12 @@ ob_start('ob_gzhandler');
 
 define('ROOT_PATH', dirname(__FILE__));
 
-require_once ROOT_PATH . '/config/conf.core.php';
-require_once ROOT_PATH . '/config/conf.db.php';
-require_once ROOT_PATH . '/config/conf.autoload.php';
+require_once ROOT_PATH . '/System/Autoloader.php';
+spl_autoload_register('Skeleton\System\Autoloader::loader');
+
+require_once ROOT_PATH . '/Config/configuration.php';
+require_once ROOT_PATH . '/Config/database.php';
+require_once ROOT_PATH . '/Config/services.php';
 
 if ('development' === $config['mode']) {
     error_reporting(E_ALL);
@@ -23,22 +26,15 @@ if ('development' === $config['mode']) {
     ini_set('display_errors', 0);
 }
 
-require_once ROOT_PATH . '/core/inc.db.php';
+require_once ROOT_PATH . '/Infrastructure/inc.db.php';
+require_once ROOT_PATH . '/Helpers/core_helper.php';
 
-require_once ROOT_PATH . '/system/sys.router.php';
-require_once ROOT_PATH . '/system/sys.application.php';
-require_once ROOT_PATH . '/system/sys.registry.php';
-require_once ROOT_PATH . '/system/sys.template.php';
-require_once ROOT_PATH . '/system/sys.model.php';
-
-require_once ROOT_PATH . '/helper/core_helper.php';
-
-$registry = new Registry();
+$registry = new \Skeleton\System\Registry();
+$registry->services = new \Skeleton\System\ServiceContainer($classes, $services);
 $registry->config = $config;
-$registry->autoload = $autoload;
 $registry->db = $db;
-$registry->template = new Template($registry);
+$registry->template = new \Skeleton\System\Template($registry);
 
-$registry->router = new Router($registry);
+$registry->router = new \Skeleton\System\Router($registry);
 
 $registry->router->render();

@@ -1,5 +1,5 @@
 <?php
-namespace Application\System;
+namespace Skeleton\System;
 
 /**
  * Class Router
@@ -66,7 +66,7 @@ class Router
 
         $className = $controller . 'Controller';
 
-        $className = '\\Application\\Controllers\\' . $className;
+        $className = '\\Skeleton\\Controllers\\' . $className;
 
         $controller = new $className($this->registry);
 

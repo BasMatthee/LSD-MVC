@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\System;
+namespace Skeleton\System;
 
 /**
  * Class Model

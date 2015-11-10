@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\Controllers;
+namespace Skeleton\Controllers;
 
-use Application\System\ApplicationFront;
-use Application\System\Registry;
+use Skeleton\System\ApplicationFront;
+use Skeleton\System\Registry;
 
 /**
  * Class IndexController
@@ -18,11 +18,8 @@ class IndexController extends ApplicationFront
     {
         parent::__construct($registry);
 
-        /** @type \Application\Models\AlertModel $alertModel */
-        $alertModel = $this->services->get('application.models.alert');
-
-        /** @type \Application\Models\TestModel $testModel */
-        $testModel = $this->services->get('application.models.test');
+        /** @type \Skeleton\Application\Alert\AlertService $alertModel */
+        $alertService = $this->services->get('application.services.alert');
     }
 
     /**

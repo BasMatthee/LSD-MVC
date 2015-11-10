@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\Controllers\Admin;
+namespace Skeleton\Controllers\Admin;
 
-use Application\System\ApplicationAdmin;
-use Application\System\Registry;
+use Skeleton\System\ApplicationAdmin;
+use Skeleton\System\Registry;
 
 /**
  * Class IndexController

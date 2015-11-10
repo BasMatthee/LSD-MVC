@@ -1,12 +1,12 @@
 <?php
-namespace Application\System;
+namespace Skeleton\System;
 
 /**
  * ServiceContainer
  *
  * @author Bas Matthee <basmatthee@gmail.com>
  * @copyright Copyright (c) 2015 LEVIY <https://www.leviy.com>
- * @package Application\System
+ * @package Skeleton\System
  */
 class ServiceContainer
 {
