@@ -1,9 +1,11 @@
 <?php
 
+namespace Application\System;
+
 /**
- * Class Core_model
+ * Class Model
  */
-class Core_model
+class Model
 {
     /**
      * @constructor
@@ -13,7 +15,7 @@ class Core_model
     }
 
     /**
-     * @param mysqli_result $db_result
+     * @param \mysqli_result $db_result
      * @return array
      */
     public function fetch_result($db_result)

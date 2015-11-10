@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\System;
+
 /**
  * Class Template
  */
@@ -7,7 +9,7 @@ class Template
 {
     /** @type Registry */
     private $registry;
-    /** @type Core_model[] */
+    /** @type Model[] */
     public $model;
 
     /**
@@ -28,6 +30,6 @@ class Template
             $$key = $value;
         }
 
-        include ROOT_PATH . '/view/' . $view . '.php';
+        include ROOT_PATH . '/Views/' . $view . '.php';
     }
 }

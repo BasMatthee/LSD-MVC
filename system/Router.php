@@ -1,4 +1,5 @@
 <?php
+namespace Application\System;
 
 /**
  * Class Router
@@ -25,12 +26,12 @@ class Router
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      * @return void
      */
     public function render()
     {
-        $controller = 'index';
+        $controller = 'Index';
         $action = 'index';
         $admin_prefix = '';
         $url_position = 0;
@@ -46,7 +47,7 @@ class Router
                 if (isset($this->uri[$url_position])) {
                     $controller = $this->uri[$url_position];
                 } else {
-                    $controller = 'index';
+                    $controller = 'Index';
                 }
             }
 
@@ -55,16 +56,18 @@ class Router
             }
         }
 
-        $controller_file = ROOT_PATH . '/controller/' . $admin_prefix . $controller . '_controller.php';
+        $controller_file = ROOT_PATH . '/Controllers/' . $admin_prefix . $controller . 'Controller.php';
 
         if (file_exists($controller_file) === false) {
-            throw new Exception('Controller not found: ' . $controller_file);
+            throw new \Exception('Controller not found: ' . $controller_file);
         }
 
-        // Include controller
         include_once $controller_file;
 
-        $className = $controller . '_controller';
+        $className = $controller . 'Controller';
+
+        $className = '\\Application\\Controllers\\' . $className;
+
         $controller = new $className($this->registry);
 
         /** @type Application $controller */
