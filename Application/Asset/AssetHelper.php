@@ -76,7 +76,7 @@ class AssetHelper
      * @param array $reference
      * @return int
      */
-    function sort($array, $identifier, $reference = array())
+    private function sort($array, $identifier, array $reference = array())
     {
         if (is_array($identifier) && isset($identifier[0])) {
             $identifier = $identifier[0];
@@ -95,13 +95,5 @@ class AssetHelper
         $result = $this->sort($array, $array[$identifier]['dependency'], $reference);
 
         return ($result == -1 ? -1 : $result + 1);
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'assets';
     }
 }

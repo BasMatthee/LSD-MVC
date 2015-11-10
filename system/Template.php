@@ -9,6 +9,8 @@ class Template
 {
     /** @type Registry */
     private $registry;
+    /** @type ServiceContainer */
+    private $services;
 
     /**
      * @param Registry $registry
