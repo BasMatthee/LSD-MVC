@@ -1,12 +1,12 @@
 <?php
-namespace Skeleton\Application\Assets;
+namespace Skeleton\Application\Asset;
 
 /**
- * AssetsHelper
+ * AssetHelper
  *
  * @author Bas Matthee <basmatthee@gmail.com>
- * @copyright Copyright (c) 2015 LEVIY <https://www.leviy.com>
- * @package AssetsHelper
+ * @copyright Copyright (c) 2015 Bas Matthee <http://www.bas-matthee.nl>
+ * @package AssetHelper
  */
 class AssetsHelper
 {
