@@ -1,9 +1,13 @@
 <?php
 
+namespace Application\Models;
+
+use Application\System\Model;
+
 /**
- * Class Alert_model
+ * Class AlertModel
  */
-class Alert_model extends Core_model
+class AlertModel extends Model
 {
     /** @type array */
     public $alerts = array();
