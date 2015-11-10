@@ -18,7 +18,7 @@ class IndexController extends ApplicationFront
     {
         parent::__construct($registry);
 
-        /** @type \Skeleton\Application\Alert\AlertService $alertModel */
+        /** @type \Skeleton\Application\Alert\AlertService $alertService */
         $alertService = $this->services->get('application.services.alert');
     }
 
