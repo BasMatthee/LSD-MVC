@@ -6,6 +6,19 @@
         <hr>
 
         <div class="row">
+            <div class="col-md-12">
+                <?php
+                /** @type \Skeleton\Application\Alert\AlertService $alertService */
+                $alertService = $this->services->get('application.services.alert');
+
+                echo $alertService->getAll();
+                ?>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
             <div class="col-sm-8">
                 <h2>What We Do</h2>
                 <p>Introduce the visitor to the business using clear, informative text. Use well-targeted keywords within your sentences to make sure search engines can find the business.</p>

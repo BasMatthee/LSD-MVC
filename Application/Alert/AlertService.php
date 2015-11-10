@@ -24,20 +24,20 @@ class AlertService
      * @param string $alert
      * @param string $alert_type
      */
-    public function set_alert($alert, $alert_type = 'success')
+    public function add($alert, $alert_type = 'success')
     {
         $this->alerts[] = array(
             'alert' => $alert,
             'type' => $alert_type
         );
 
-        $this->update_alerts();
+        $this->updateSession();
     }
 
     /**
      * @return string
      */
-    public function get_alerts()
+    public function getAll()
     {
         $output = '';
 
@@ -46,7 +46,7 @@ class AlertService
         }
 
         $this->alerts = array();
-        $this->update_alerts();
+        $this->updateSession();
 
         return $output;
     }
@@ -54,7 +54,7 @@ class AlertService
     /**
      * @return void
      */
-    public function update_alerts()
+    public function updateSession()
     {
         $_SESSION[get_config('sess')]['alerts'] = $this->alerts;
     }

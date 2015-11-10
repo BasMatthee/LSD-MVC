@@ -9,8 +9,6 @@ class Template
 {
     /** @type Registry */
     private $registry;
-    /** @type Model[] */
-    public $model;
 
     /**
      * @param Registry $registry
@@ -19,6 +17,7 @@ class Template
     public function __construct(Registry $registry)
     {
         $this->registry = $registry;
+        $this->services = $registry->services;
     }
 
     /**

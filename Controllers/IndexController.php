@@ -17,9 +17,6 @@ class IndexController extends ApplicationFront
     public function __construct(Registry $registry)
     {
         parent::__construct($registry);
-
-        /** @type \Skeleton\Application\Alert\AlertService $alertService */
-        $alertService = $this->services->get('application.services.alert');
     }
 
     /**
@@ -27,6 +24,14 @@ class IndexController extends ApplicationFront
      */
     public function index()
     {
+        /** @type \Skeleton\Application\Alert\AlertService $alertService */
+        $alertService = $this->services->get('application.services.alert');
+
+        $alertService->add('This is a positive alert.', 'success');
+        $alertService->add('This is an informative alert.', 'info');
+        $alertService->add('This is a warning.', 'warning');
+        $alertService->add('This is an error!', 'danger');
+
         $this->view('index/home');
     }
 }

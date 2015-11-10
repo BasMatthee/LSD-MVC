@@ -11,8 +11,6 @@ abstract class Application
     private $registry;
     /** @type array */
     private $data = array();
-    /** @type Model[] */
-    public $model;
     /** @type \mysqli */
     public $db;
     /** @type ServiceContainer */
