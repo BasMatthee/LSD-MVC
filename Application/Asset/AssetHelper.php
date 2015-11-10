@@ -60,12 +60,13 @@ class AssetHelper
         array_multisort($results, SORT_ASC, $this->assets[$type]);
 
         foreach ($this->assets[$type] as $asset) {
-            if ('css' === $type) {
-                echo '<link rel="stylesheet" type="text/css" href="' . $this->baseUrl . $asset['file'] . '"/>' . PHP_EOL;
-            }
-
-            if ('js' === $type) {
-                echo '<script type="text/javascript" src="' . $this->baseUrl . $asset['file'] . '"></script>' . PHP_EOL;
+            switch ($type) {
+                case 'css':
+                    echo '<link rel="stylesheet" type="text/css" href="' . $this->baseUrl . $asset['file'] . '"/>' . PHP_EOL;
+                    break;
+                case 'js':
+                    echo '<script type="text/javascript" src="' . $this->baseUrl . $asset['file'] . '"></script>' . PHP_EOL;
+                    break;
             }
         }
     }
