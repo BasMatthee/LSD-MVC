@@ -2,6 +2,9 @@
 
 namespace Skeleton\System;
 
+use Skeleton\System\Containers\ConfigurationContainer;
+use Skeleton\System\Containers\ServiceContainer;
+
 /**
  * Class Registry
  *

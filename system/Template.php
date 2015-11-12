@@ -2,6 +2,8 @@
 
 namespace Skeleton\System;
 
+use Skeleton\System\Containers\ServiceContainer;
+
 /**
  * Class Template
  */

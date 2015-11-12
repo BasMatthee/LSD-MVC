@@ -1,6 +1,8 @@
 <?php
 namespace Skeleton\System;
 
+use Skeleton\System\Containers\ConfigurationContainer;
+
 /**
  * Class Router
  */
