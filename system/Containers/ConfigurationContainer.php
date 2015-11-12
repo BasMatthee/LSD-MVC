@@ -27,7 +27,7 @@ class ConfigurationContainer
      * @param mixed $default
      * @return mixed
      */
-    function get($key, $default = null)
+    public function get($key, $default = null)
     {
         return (isset($this->configuration[$key])) ? $this->configuration[$key] : $default;
     }
