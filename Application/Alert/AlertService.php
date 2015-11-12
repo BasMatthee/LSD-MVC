@@ -2,7 +2,7 @@
 
 namespace Skeleton\Application\Alert;
 
-use Skeleton\System\ConfigurationContainer;
+use Skeleton\System\Containers\ConfigurationContainer;
 
 /**
  * Class AlertService

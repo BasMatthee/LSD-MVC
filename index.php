@@ -31,7 +31,7 @@ require_once ROOT_PATH . '/Infrastructure/inc.db.php';
 $registry = new \Skeleton\System\Registry();
 
 $registry->db = $db;
-$registry->services = new \Skeleton\System\ServiceContainer($classes, $services);
+$registry->services = new \Skeleton\System\Containers\ServiceContainer($classes, $services);
 $registry->template = new \Skeleton\System\Template($registry);
 $registry->router = new \Skeleton\System\Router($registry);
 

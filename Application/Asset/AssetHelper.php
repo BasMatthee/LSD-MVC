@@ -1,7 +1,7 @@
 <?php
 namespace Skeleton\Application\Asset;
 
-use Skeleton\System\ConfigurationContainer;
+use Skeleton\System\Containers\ConfigurationContainer;
 
 /**
  * AssetHelper

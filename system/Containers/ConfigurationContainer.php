@@ -1,5 +1,5 @@
 <?php
-namespace Skeleton\System;
+namespace Skeleton\System\Containers;
 
 /**
  * ConfigurationContainer

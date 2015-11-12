@@ -1,5 +1,5 @@
 <?php
-namespace Skeleton\System;
+namespace Skeleton\System\Containers;
 
 /**
  * ServiceContainer
@@ -51,8 +51,9 @@ class ServiceContainer
 
         if (0 !== count($service['parameters'])) {
             $preparedParameters = array();
+
             foreach ($service['parameters'] as $parameter) {
-                if (false !== strpos($parameter, '%')) {
+                if (is_string($parameter) && false !== strpos($parameter, '%')) {
                     $subKey = str_replace('%', '', $parameter);
 
                     $parameter = $this->get($subKey);

@@ -15,7 +15,7 @@
 $classes = array(
     'application.services.alert.class' => 'Skeleton\Application\Alert\AlertService',
     'application.helpers.assets.class' => 'Skeleton\Application\Asset\AssetHelper',
-    'system.configuration_container.class' => 'Skeleton\System\ConfigurationContainer',
+    'system.configuration_container.class' => 'Skeleton\System\Containers\ConfigurationContainer',
 );
 
 $services = array(
