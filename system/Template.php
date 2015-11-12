@@ -2,6 +2,7 @@
 
 namespace Skeleton\System;
 
+use Skeleton\System\Containers\ConfigurationContainer;
 use Skeleton\System\Containers\ServiceContainer;
 
 /**
@@ -13,6 +14,8 @@ class Template
     private $registry;
     /** @type ServiceContainer */
     private $services;
+    /** @type ConfigurationContainer */
+    private $configuration;
 
     /**
      * @param Registry $registry
