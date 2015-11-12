@@ -2,13 +2,13 @@
 namespace Skeleton\System;
 
 /**
- * Autoloader
+ * AutoLoader
  *
  * @author Bas Matthee <basmatthee@gmail.com>
  * @copyright Copyright (c) 2015 Bas Matthee <http://www.bas-matthee.nl>
  * @package Skeleton\System
  */
-final class Autoloader
+final class AutoLoader
 {
     static public function loader($className)
     {

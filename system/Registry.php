@@ -5,7 +5,6 @@ namespace Skeleton\System;
 /**
  * Class Registry
  *
- * @property array $config
  * @property array $data
  *
  * @property \mysqli $db
@@ -13,6 +12,7 @@ namespace Skeleton\System;
  * @property Router $router
  * @property Template $template
  * @property ServiceContainer $services
+ * @property ConfigurationContainer $configuration
  */
 class Registry
 {

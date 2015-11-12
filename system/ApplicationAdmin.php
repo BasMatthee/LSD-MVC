@@ -14,8 +14,10 @@ class ApplicationAdmin extends Application
     {
         parent::__construct($registry);
 
-        if (!isset($_SESSION[get_config('sess')]['is_admin']) || $_SESSION[get_config('sess')]['is_admin'] == 0) {
-            redirect('auth/login');
+        $session = $this->configuration->get('session');
+
+        if (!isset($_SESSION[$session]['is_admin']) || $_SESSION[$session]['is_admin'] == 0) {
+            $this->redirect('auth/login');
         }
     }
 

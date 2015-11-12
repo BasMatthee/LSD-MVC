@@ -10,4 +10,4 @@ $config['admin_path'] = 'admin';
 $config['mode'] = 'development';
 
 // Session container value (every session variable will be stored in that container i.e.
-$config['sess'] = 'session_name';
+$config['session'] = 'skeleton';

@@ -19,7 +19,10 @@ class Template
     public function __construct(Registry $registry)
     {
         $this->registry = $registry;
-        $this->services = $registry->services;
+
+        $this->services = $this->registry->services;
+
+        $this->configuration = $this->services->get('system.configuration_container');
     }
 
     /**

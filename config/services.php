@@ -9,19 +9,26 @@
  *
  * @author Bas Matthee <basmatthee@gmail.com>
  * @copyright Copyright (c) 2015 Bas Matthee <http://www.bas-matthee.nl>
+ *
+ * @type array $config
  */
 $classes = array(
     'application.services.alert.class' => 'Skeleton\Application\Alert\AlertService',
     'application.helpers.assets.class' => 'Skeleton\Application\Asset\AssetHelper',
+    'system.configuration_container.class' => 'Skeleton\System\ConfigurationContainer',
 );
 
 $services = array(
+    'system.configuration_container' => array(
+        'class' => 'system.configuration_container.class',
+        'parameters' => array($config),
+    ),
     'application.services.alert' => array(
         'class' => 'application.services.alert.class',
-        'parameters' => array(),
+        'parameters' => array('%system.configuration_container%'),
     ),
     'application.helpers.assets' => array(
         'class' => 'application.helpers.assets.class',
-        'parameters' => array(get_config('home_url')),
+        'parameters' => array('%system.configuration_container%'),
     ),
 );

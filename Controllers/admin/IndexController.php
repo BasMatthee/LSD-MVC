@@ -24,6 +24,6 @@ class IndexController extends ApplicationAdmin
      */
     public function index()
     {
-        redirect('admin/dashboard');
+        $this->redirect('admin/dashboard');
     }
 }

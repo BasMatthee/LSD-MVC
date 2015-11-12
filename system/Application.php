@@ -15,6 +15,8 @@ abstract class Application
     public $db;
     /** @type ServiceContainer */
     protected $services;
+    /** @type ConfigurationContainer */
+    protected $configuration;
 
     /**
      * @param Registry $registry
@@ -28,9 +30,11 @@ abstract class Application
         unset($registry->vars['db']);
 
         $this->registry = $registry;
+        $this->services = $this->registry->services;
+
         $this->registry->data = array();
 
-        $this->services = $registry->services;
+        $this->configuration = $this->services->get('system.configuration_container');
     }
 
     /**
@@ -42,6 +46,21 @@ abstract class Application
     {
         $this->registry->data = array_merge($this->registry->data, $data);
         $this->registry->template->show($view);
+    }
+
+    /**
+     * @param string $location
+     * @param bool $external
+     */
+    public function redirect($location, $external = false)
+    {
+        if ($external) {
+            header('Location: ' . $location);
+            exit;
+        } else {
+            header('Location: ' . $this->configuration->get('home_url'), $location);
+            exit;
+        }
     }
 
     /**

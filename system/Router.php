@@ -10,6 +10,8 @@ class Router
     private $uri = array();
     /** @type Registry */
     private $registry;
+    /** @type ConfigurationContainer */
+    private $configuration;
 
     /**
      * @param Registry $registry
@@ -18,6 +20,8 @@ class Router
     public function __construct(Registry $registry)
     {
         $this->registry = $registry;
+
+        $this->configuration = $registry->services->get('system.configuration_container');
 
         if (isset($_GET['uri'])) {
             $this->uri = explode('/', $_GET['uri']);
@@ -39,8 +43,8 @@ class Router
         if (isset($this->uri[$url_position])) {
             $controller = $this->uri[$url_position];
 
-            if ($controller == get_config('admin_path')) {
-                $admin_prefix = get_config('admin_path') . '/';
+            if ($controller == $this->configuration->get('admin_path')) {
+                $admin_prefix = $this->configuration->get('admin_path') . '/';
 
                 $url_position++;
 

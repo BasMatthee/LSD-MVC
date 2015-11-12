@@ -2,6 +2,8 @@
 
 namespace Skeleton\Application\Alert;
 
+use Skeleton\System\ConfigurationContainer;
+
 /**
  * Class AlertService
  */
@@ -9,14 +11,19 @@ class AlertService
 {
     /** @type array */
     public $alerts = array();
+    /** @type string */
+    public $sessionName;
 
     /**
+     * @param ConfigurationContainer $configuration
      * @constructor
      */
-    public function __construct()
+    public function __construct(ConfigurationContainer $configuration)
     {
-        if (isset($_SESSION[get_config('sess')]['alerts'])) {
-            $this->alerts = $_SESSION[get_config('sess')]['alerts'];
+        $this->sessionName = $configuration->get('session');
+
+        if (isset($_SESSION[$this->sessionName]['alerts'])) {
+            $this->alerts = $_SESSION[$this->sessionName]['alerts'];
         }
     }
 
@@ -56,6 +63,6 @@ class AlertService
      */
     public function updateSession()
     {
-        $_SESSION[get_config('sess')]['alerts'] = $this->alerts;
+        $_SESSION[$this->sessionName]['alerts'] = $this->alerts;
     }
 } 

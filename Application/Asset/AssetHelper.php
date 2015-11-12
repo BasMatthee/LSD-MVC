@@ -1,6 +1,8 @@
 <?php
 namespace Skeleton\Application\Asset;
 
+use Skeleton\System\ConfigurationContainer;
+
 /**
  * AssetHelper
  *
@@ -19,11 +21,11 @@ class AssetHelper
     );
 
     /**
-     * @param string $baseUrl
+     * @param ConfigurationContainer $configuration
      */
-    public function __construct($baseUrl)
+    public function __construct(ConfigurationContainer $configuration)
     {
-        $this->baseUrl = (string)$baseUrl;
+        $this->baseUrl = $configuration->get('home_url');
     }
 
     /**
