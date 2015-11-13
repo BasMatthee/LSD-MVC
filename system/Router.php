@@ -26,8 +26,9 @@ class Router
         $this->configuration = $registry->services->get('system.configuration_container');
 
         if (isset($_GET['uri'])) {
-            $this->uri = explode('/', $_GET['uri']);
-            $this->uri = array_filter($this->uri);
+            $this->uri = array_filter(
+                explode('/', $_GET['uri'])
+            );
         }
     }
 
@@ -39,36 +40,23 @@ class Router
     {
         $controller = 'Index';
         $action = 'index';
-        $admin_prefix = '';
-        $url_position = 0;
+        $urlPosition = 0;
 
-        if (isset($this->uri[$url_position])) {
-            $controller = $this->uri[$url_position];
+        if (isset($this->uri[$urlPosition])) {
+            $controller = $this->uri[$urlPosition];
 
-            if ($controller == $this->configuration->get('admin_path')) {
-                $admin_prefix = $this->configuration->get('admin_path') . '/';
-
-                $url_position++;
-
-                if (isset($this->uri[$url_position])) {
-                    $controller = $this->uri[$url_position];
-                } else {
-                    $controller = 'Index';
-                }
-            }
-
-            if (isset($this->uri[($url_position + 1)])) {
-                $action = $this->uri[($url_position + 1)];
+            if (isset($this->uri[($urlPosition + 1)])) {
+                $action = $this->uri[($urlPosition + 1)];
             }
         }
 
-        $controller_file = ROOT_PATH . '/Controllers/' . $admin_prefix . $controller . 'Controller.php';
+        $filename = ROOT_PATH . '/Controllers/' . $controller . 'Controller.php';
 
-        if (file_exists($controller_file) === false) {
-            throw new \Exception('Controller not found: ' . $controller_file);
+        if (false === file_exists($filename)) {
+            throw new \Exception('Controller not found: ' . $filename);
         }
 
-        include_once $controller_file;
+        require_once $filename;
 
         $className = $controller . 'Controller';
 
@@ -80,6 +68,10 @@ class Router
         if (method_exists($controller, $action)) {
             $controller->$action();
         } else {
+            if (false === method_exists($controller, 'index')) {
+                throw new \Exception('Index action not found: ' . $filename);
+            }
+
             $controller->index();
         }
     }
